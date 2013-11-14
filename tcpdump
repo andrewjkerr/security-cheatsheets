@@ -1,5 +1,7 @@
-#Basic Usage
-
+# alex <AlexBujduveanu>
+###############
+# Basic Usage #
+###############
 #Capture packets on a particular interface (eth0)
 #Note that tcpdump (without the '-i eth0') is also valid if you are only using one interface
 tcpdump -i eth0
@@ -36,12 +38,9 @@ tcpdump port 3389
 #Display captured packets above or below a certain size (in bytes)
 tcpdump less 64
 tcpdump greater 256
-
-
-
-
-#Advanced Usage 
-
+##################
+# Advanced Usage #
+##################
 #More complex statements can be formed with the use of logical operators: and(&&), or(||), not(!)
 #Examples:
 
@@ -57,9 +56,3 @@ tcpdump src H1 and not dst port 22
 #With some complex queries you may have to use single quotes to ignore special characters, namely parentheses 
 #Capture traffic from 192.168.1.1 that is destined for ports 80 and 21
 tcpdump 'src 192.168.1.1 and (dst port 80 or 21)'
-
-
-
-
-
-
