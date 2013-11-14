@@ -11,4 +11,4 @@ The only requirement to use these cheatsheets is for [cheat](https://github.com/
 How to Use
 ----------
 
-In order to use these cheatsheets, the cheatsheets in this repository need to go into ~/.cheat/ directory. After the files are moved into that directory, 'cheat ncat' will display the ncat cheatsheet.
+In order to use these cheatsheets, the cheatsheets in this repository need to go into `~/.cheat/` directory. After the files are moved into that directory, `cheat ncat` will display the ncat cheatsheet.
