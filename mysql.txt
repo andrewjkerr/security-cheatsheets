@@ -1,0 +1,61 @@
+# To connect to a database
+mysql -h localhost -u root -p
+
+# To backup all databases
+mysqldump --all-databases --all-routines -u root -p > ~/fulldump.sql
+
+# To restore all databases
+mysql -u root -p  < ~/fulldump.sql
+
+# To create a database in utf8 charset
+CREATE DATABASE owa CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+# Types of user permissions:
+
+# ALL PRIVILEGES - gives user full unrestricted access 
+# CREATE - allows user to create new tables or databases
+# DROP - allows user to delete tables or databases
+# DELETE - allows user to delete rows from tables
+# INSERT- allows user to insert rows into tables
+# SELECT- allows user to use the Select command to read through databases
+# UPDATE- allow user to update table rows
+# GRANT OPTION- allows user to grant or remove other users' privileges
+
+# To grant specific permissions to a particular user
+GRANT permission_type ON database_name.table_name TO 'username'@'hostname';
+
+# To add a user and give rights on the given database
+GRANT ALL PRIVILEGES ON database.* TO 'user'@'localhost'IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+# To change the root password
+SET PASSWORD FOR root@localhost=PASSWORD('new_password');
+
+# To delete a database
+DROP DATABASE database_name;
+
+# To reload privileges from MySQL grant table
+FLUSH PRIVILEGES;
+
+# Show permissions for a particular user
+SHOW GRANTS FOR 'username'@'hostname';
+
+# Find out who the current user is
+SELECT CURRENT_USER();
+
+# To delete a table in the database
+DROP TABLE table_name;
+
+#To return all records from a particular table
+SELECT * FROM table_name;
+
+# To create a table (Users table used as example)
+# Note: Since username is a primary key, it is NOT NULL by default. Email is optional in this example.
+CREATE TABLE Users (
+	username VARCHAR(80),
+	password VARCHAR(80) NOT NULL,
+	email VARCHAR(80),
+	PRIMARY KEY (username)
+);
+
+# To disable general logging 
+set global general_log=0;
