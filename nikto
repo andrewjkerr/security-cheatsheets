@@ -1,0 +1,12 @@
+# alex <alexbujduveanu>
+# To scan a particular host
+perl nikto.pl -host [host IP/name]
+
+# To scan a host on multiple ports (default = 80)
+perl nikto.pl -host [host IP/name] -port [port number 1], [port number 2], [port number 3]
+
+# To scan a host and output fingerprinted information to a file
+perl nikto.pl -host [host IP/name] -output [output_file]
+
+# To use a proxy while scanning a host 
+perl nikto.pl -host [host IP/name] -useproxy [proxy address]

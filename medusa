@@ -1,0 +1,31 @@
+# alex <alexbujduveanu>
+# To display all currently installed modules
+medusa -d
+
+# Display specific options for a module
+medusa -M [module_name] -q
+
+# Test all passwords in password file against the admin user on the host
+# 192.168.1.20 via the SMB | SSH | MySQL | HTTP service 
+medusa -h 192.168.1.20 -u admin -P passwords.txt -M [smbnt | ssh | mssql | http]
+
+# To brute force 10 hosts and 5 users concurrently (using Medusa's parallel features)
+# Each of the 5 threads targeting a host will check a specific user
+medusa -H hosts.txt -U users.txt -P passwords.txt -T 10 -t 5 -L -F -M smbnt
+
+
+# Medusa allows username, password, and host data to be placed within the same file (the "combo" file).
+# Possible combinations in the combo file:
+
+# host:username:password
+# host:username:
+# host::
+# :username:password
+# :username:
+# ::password
+# host::password
+# :id:lm:ntlm::: (PwDump files)
+
+
+# To test each username/password entry in the file combo.txt
+medusa -M smbnt -C combo.txt

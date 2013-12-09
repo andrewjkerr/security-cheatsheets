@@ -1,3 +1,4 @@
+# alex <alexbujduveanu>
 # To connect to a database
 mysql -h localhost -u root -p
 

@@ -1,7 +1,9 @@
 # alex <AlexBujduveanu>
+
 ###############
 # Basic Usage #
 ###############
+
 #Capture packets on a particular interface (eth0)
 #Note that tcpdump (without the '-i eth0') is also valid if you are only using one interface
 tcpdump -i eth0
@@ -38,9 +40,12 @@ tcpdump port 3389
 #Display captured packets above or below a certain size (in bytes)
 tcpdump less 64
 tcpdump greater 256
+
+
 ##################
 # Advanced Usage #
 ##################
+
 #More complex statements can be formed with the use of logical operators: and(&&), or(||), not(!)
 #Examples:
 
