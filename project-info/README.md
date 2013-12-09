@@ -8,28 +8,31 @@ As of now, we are unable to accept pull requests since this is a class project. 
 Contributors
 ------------
 
-1. Andrew Kerr <andrewjkerr>
-	*ncat
-	*sqlmap
-	*cookies
-	*php
-	*shadow
-	*shodan
-	*markdown
-	*permissions
-	*ruby
-2. Angela Evans <angelaevans>
-	*john
-	*dig
-3. Alex Bujduveanu <alexbujduveanu>
-	*mysql
-	*ps
-	*medusa
-	*nikto
-	*tcpdump
-4. Michael Christakos <truckiewow>
-	*aircrack-ng
-	*maltego
+Andrew Kerr (andrewjkerr)
+* ncat
+* sqlmap
+* cookies
+* php
+* shadow
+* shodan
+* markdown
+* permissions
+* ruby
+
+Angela Evans (angelaevans)
+* john
+* dig
+
+Alex Bujduveanu (alexbujduveanu)
+* mysql
+* ps
+* medusa
+* nikto
+* tcpdump
+
+Michael Christakos (truckiewow)
+* aircrack-ng
+* maltego
 
 Project Tracking
 ----------------
