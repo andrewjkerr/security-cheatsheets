@@ -1,0 +1,35 @@
+# andrew <andrewjkerr>
+# javascript
+document.cookie; # can pair with alert();
+
+# edit cookies in chrome
+Settings -> Advanced Settings -> Privacy -> Content -> Cookies
+or "Edit This Cookie" plugin
+
+# edit cookies in firefox
+Preferences -> Privacy -> Show Cookies
+or "Cookies Manager+" addon
+
+# cookies with ruby
+# Use HTTP::Cookie library <https://github.com/sparklemotion/http-cookie>
+# Following examples were taken from the readme.md from above repository
+## Several cookies
+	jar = HTTP::CookieJar.new
+	jar.load(filename) if File.exist?(filename)
+	header["Set-Cookie"].each { |value| jar.parse(value, uri) }
+	header["Cookie"] = HTTP::Cookie.cookie_value(jar.cookies(uri))
+
+## One cookie
+	cookie = HTTP::Cookie.new("uid", "u12345", domain: 'example.org',
+						   for_domain: true,
+						   path: '/',
+						   max_age: 7 * 86400)
+	header['Set-Cookie'] = cookie.set_cookie_value
+
+# cookies with python
+# python has a cookie library!
+# Following example taken from the python documentation
+import cookielib, urllib2
+cj = cookielib.CookieJar()
+opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+r = opener.open("http://example.com/")

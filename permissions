@@ -1,0 +1,16 @@
+# andrew <andrewjkerr>
+# file permissions
+-	 rw-	       r--	     r--
+filetype u-permissions g-permissions o-permissions
+
+# file properties
+1         root  root  1845 	   Dec 9 3:34 /etc/shadow
+num-links owner group inode-number date/time  file-name
+
+# chmod
+Each rwx is either 0/1 (true or false)
+Convert to decimal
+chmod ### filename
+
+## Example: rwx rw- r--
+	chmod 764 filename
