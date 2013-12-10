@@ -1,0 +1,33 @@
+# alexbujduveanu <alexbujduveanu>
+
+# To perform a TCP connect() (handshake) with a host
+nping --tcp-connect [target host]
+
+# To perform a TCP connect() 
+nping --tcp-connect [target host] [target host] [target host] 
+
+# To attempt a TCP handshake on a port range (1-80)
+nping --tcp-connect [target host] -p1-80 -c 1
+
+# To send a UDP packet with 50 bytes of random data (to port 53 in this example)
+nping --udp [target host] -p 53 --data-length 100
+
+# Send 500 TCP packets at a rate of 50 packets per second
+nping --tcp [target host] --rate 50 -c 500
+
+# To send an ARP request to a particular host
+ping --arp [target host] 
+
+# To send ARP requests to all hosts in the 192.168.1.0/24 network
+nping --arp 192.168.1.0/24 
+
+# To send an ICMP echo request
+nping [target host] --icmp --icmp-type echo 
+
+# To send an ICMP echo reply
+nping google.com --icmp --icmp-type echo-reply
+
+# To send a packet with a bad checksum from port 1221 to port 80
+nping --udp --badsum --source-port 1221 -p 80 google.com 
+
+# To toggle how verbose the output should be, simply append '-v ' followed by an integer between -4 (no output) and 4 (very verbose)
