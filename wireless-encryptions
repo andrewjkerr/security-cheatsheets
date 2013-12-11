@@ -1,0 +1,17 @@
+#Wired Equivalent Privacy (WEP)
+RC4 stream cipher w/ CRC32 for integrity check
+-->Crack: 
+by sniffing an ARP packet, then replaying it to get many encrypted replies with different IVs
+-->Avoidance: 
+Use WPA2
+
+#Wifi Protected Access (WPA)
+Temporal Key Integrity Protocol (TKIP) Message Integrity Check
+-->Crack: 
+Uses a four way handshake, and if that handshake can be captured, then a dictionary attack ban be mounted to find the Pairwise Master Key for the Access Point and client Station
+-->Avoidance: 
+Use long-keys
+
+#WPA2
+Advanced Encryption Standard (AES)
+-->crack and avoidance the same was WPA
