@@ -33,6 +33,10 @@ Alex Bujduveanu (alexbujduveanu)
 Michael Christakos (truckiewow)
 * aircrack-ng
 * maltego
+* cewl
+* fierce
+* metasploit
+* wireshark
 
 Project Tracking
 ----------------
