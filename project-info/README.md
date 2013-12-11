@@ -22,6 +22,12 @@ Andrew Kerr (andrewjkerr)
 Angela Evans (angelaevans)
 * john
 * dig
+* ftp
+* web-servers-vulnerability
+* wireless-encryptions
+* http
+* hydra
+* https-ssl-tls
 
 Alex Bujduveanu (alexbujduveanu)
 * mysql
@@ -29,6 +35,10 @@ Alex Bujduveanu (alexbujduveanu)
 * medusa
 * nikto
 * tcpdump
+* python
+* nping
+* pivoting
+* cidr
 
 Michael Christakos (truckiewow)
 * aircrack-ng
