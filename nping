@@ -28,6 +28,6 @@ nping [target host] --icmp --icmp-type echo
 nping google.com --icmp --icmp-type echo-reply
 
 # To send a packet with a bad checksum from port 1221 to port 80
-nping --udp --badsum --source-port 1221 -p 80 google.com 
+nping --udp --badsum --source-port 1221 -p 80 [target host]
 
 # To toggle how verbose the output should be, simply append '-v ' followed by an integer between -4 (no output) and 4 (very verbose)
