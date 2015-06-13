@@ -1,3 +1,5 @@
+Forked repository of andrwjkerr for www.sniferl4bs.com
+
 Security Cheatsheets
 ====================
 
@@ -12,3 +14,11 @@ How to Use
 ----------
 
 In order to use these cheatsheets, the cheatsheets in this repository need to go into `~/.cheat/` directory. After the files are moved into that directory, `cheat ncat` will display the ncat cheatsheet.
+
+Contributors
+============
+
+Jose Moruno Cadima aka Snifer
+
+Twitter: SniferL4bs
+[TWITTER](https://twitter.com/sniferl4bs) [BLOG](http://www.sniferl4bs.com)
