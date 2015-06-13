@@ -1,4 +1,10 @@
-Forked repository of andrwjkerr for www.sniferl4bs.com
+NOTE
+====
+
+[Andrwjkerr](https://github.com/andrewjkerr/security-cheatsheets) forked repository for 
+[www.sniferl4bs.com](www.sniferl4bs.com)
+
+The fork was done because the original author has not updated about 2 years ago.
 
 Security Cheatsheets
 ====================
@@ -20,5 +26,4 @@ Contributors
 
 Jose Moruno Cadima aka Snifer
 
-Twitter: SniferL4bs
 [TWITTER](https://twitter.com/sniferl4bs) [BLOG](http://www.sniferl4bs.com)
