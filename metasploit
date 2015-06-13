@@ -1,20 +1,37 @@
-# To show all exploits that for a vulnerability
-grep <vulnerability> show exploits
+**Metasploit Console Basics**
 
-# To select an exploit to use
-use <exploit>
+#Search for module:
+msf > search [regex]
 
-# To see the current settings for a selected exploit
-show options
+#Specify and exploit to use:
+msf > use exploit/[ExploitPath]
 
-# To see compatible payloads for a selected exploit
-show payloads
+#Specify a Payload to use:
+msf > set PAYLOAD [PayloadPath]
 
-# To set the payload for a selected exploit
-set payload <payload>
+#Show options for the current modules:
+msf > show options
 
-# To set setting for a selected exploit 
-set <option> <value>
+#Set options:
+msf > set [Option] [Value]
 
-# To run the exploit
-exploit
+#Start exploit:
+msf > exploit 
+
+**Useful Auxiliary Modules **
+#Port Scanner:
+msf > use auxiliary/scanner/portscan/tcp
+msf > set RHOSTS 10.10.10.0/24
+msf > run
+#DNS Enumeration
+msf > use auxiliary/gather/dns_enum
+msf > set DOMAIN target.tgt
+msf > run
+#FTP Server
+msf > use auxiliary/server/ftp
+msf > set FTPROOT /tmp/ftproot
+msf > run
+#Proxy Server
+msf > use auxiliary/server/socks4
+msf > run 
+
