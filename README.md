@@ -27,3 +27,8 @@ Contributors
 Jose Moruno Cadima aka Snifer
 
 [TWITTER](https://twitter.com/sniferl4bs) [BLOG](http://www.sniferl4bs.com)
+
+Resources
+=========
+
+Metasploit Cheat Sheet [Sans Institute](http://www.sans.org/security-resources/sec560/misc_tools_sheet_v1.pdf)
