@@ -24,9 +24,9 @@ In order to use these cheatsheets, the cheatsheets in this repository need to go
 Contributors
 ============
 
-Jose Moruno Cadima aka Snifer
+Jose Moruno Cadima aka Snifer [TWITTER](https://twitter.com/sniferl4bs) [BLOG](http://www.sniferl4bs.com)
 
-[TWITTER](https://twitter.com/sniferl4bs) [BLOG](http://www.sniferl4bs.com)
+Jason Soto aka Jsitech [TWITTER](https://twitter.com/Jsitech) [BLOG](http://www.jsitech.com)
 
 Jason Soto aka JsiTech
 
