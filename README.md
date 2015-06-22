@@ -28,10 +28,6 @@ Jose Moruno Cadima aka Snifer [TWITTER](https://twitter.com/sniferl4bs) [BLOG](h
 
 Jason Soto aka Jsitech [TWITTER](https://twitter.com/Jsitech) [BLOG](http://www.jsitech.com)
 
-Jason Soto aka JsiTech
-
-[TWITTER](https://twitter.com/jsitech) [BLOG](http://www.jsitech.com)
-
 GUTEM -  [GITHUB](https://github.com/Gutem)
 
 Resources
