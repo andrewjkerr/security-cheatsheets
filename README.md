@@ -25,8 +25,10 @@ Contributors
 ============
 
 Jose Moruno Cadima aka Snifer [TWITTER](https://twitter.com/sniferl4bs) [BLOG](http://www.sniferl4bs.com)
-GUTEM -  [GITHUB](https://github.com/Gutem)
+
 Jason Soto aka Jsitech [TWITTER](https://twitter.com/Jsitech) [BLOG](http://www.jsitech.com)
+
+GUTEM -  [GITHUB](https://github.com/Gutem)
 
 Resources
 =========
