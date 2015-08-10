@@ -1,4 +1,13 @@
+#Wifi Cheat Sheet - aircrack-ng
 # michael <truckiewow>
+#Jose Moruno Cadima  <sniferl4bs>
+
+#Start Monitor Mode and Save captures
+iw dev wlan0 add interface mon0 type monitor
+airmon-ng start wlan0 <Chanel>
+airodump-ng -c <Chanel> --bssid <MAC AP> -w <NameCapture> <InterfaceMonitor>
+
+
 # To crack WEP for a given essid name and store into a file
 aircrack-ng -a 1 -e <essid> -l <output file> <.cap or .ivs file(s)>
 
