@@ -30,6 +30,16 @@ Jason Soto aka Jsitech [TWITTER](https://twitter.com/Jsitech) [BLOG](http://www.
 
 GUTEM -  [GITHUB](https://github.com/Gutem)
 
+Original Contributors
+===================== 
+
+Andrew Kerr (andrewjkerr)
+
+Angela Evans (angelaevans)
+
+Alex Bujduveanu (alexbujduveanu)
+
+Michael Christakos (truckiewow)
 Resources
 =========
 
