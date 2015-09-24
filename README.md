@@ -1,7 +1,7 @@
 NOTE
 ====
 
-[Andrwjkerr](https://github.com/andrewjkerr/security-cheatsheets) forked repository for 
+[andrewjkerr](https://github.com/andrewjkerr/security-cheatsheets) forked repository for 
 [www.sniferl4bs.com](www.sniferl4bs.com)
 
 The fork was done because the original author has not updated about 2 years ago.
