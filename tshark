@@ -1,0 +1,23 @@
+#Jose Moruno Cadima 
+# The Cheat sheet is under construction
+# Update 08/09/2015
+
+
+
+#Filter with specific IP
+tshark -i eth0  host 127.0.0.1
+
+#Filter with port
+tshark -i eth0 host 127.0.0.1 and port 8080
+
+#Time duration capture
+tshark  -i eth0 -a duration:5 -w traffic.pcap
+  -i to choose the interface on your machine.
+  -a for duration which is in seconds.
+  -w to write the capture packets in the file.
+
+# Capture all udp traffic
+tshark udp
+
+#Tshark trace incoming HTTP requests 
+tshark -i eth0 -R 'http.request'

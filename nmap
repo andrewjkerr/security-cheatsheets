@@ -1,0 +1,49 @@
+# Nmap Cheat Sheet
+#Jose Moruno Cadima <www.sniferl4bs.com>
+
+#Basic Syntax
+nmap [ScanType] [Options] {targets}
+
+#Target Specification
+IPv4 address: 192.168.1.1
+IPv6 address: AABB:CCDD::FF::
+Host name: www.sniferl4bs.com
+IP address range: 192.168.0-255
+Use file with lists of targets: -iL <filename>
+
+
+#Target Ports
+No port range specified scans 1,000 most popular ports
+
+-F Scan 100 most popular ports
+-p<port1>-<port2> Port range
+-p<port1>,<port2>,... Port List
+--top-ports <n> Scan n most popular ports
+
+#Scan Types
+
+-O OS Detection
+-sP Probe only host live scan
+-sS SYN Scan
+-sT TCP Connect Scan
+-sU UDP Scan
+-sV Version Scan
+
+#Output Formats
+
+-oN Standard Nmap output
+-oX XML format
+
+#Timing Options
+
+-T0 Paranoid: Very slow, used for IDS evasion
+-T1 Sneaky: Quite slow, used for IDS evasion
+-T2 Polite: Slows down to consume less
+ bandwidth, runs ~10 times slower than
+ default
+-T3 Normal: Default, a dynamic timing model
+ based on target responsiveness
+-T4 Aggressive: Assumes a fast and reliable
+ network and may overwhelm targets
+-T5 Insane: Very aggressive; will likely
+ overwhelm targets or miss open ports
