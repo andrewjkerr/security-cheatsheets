@@ -1,0 +1,221 @@
+#Memory Forensics CheatSheet (WINDOWS)
+#Resource - SANS Memory Forensic Cheat Sheet v1.2
+#Jason Soto <www.jsitech.com>
+
+============================================================
+#Memory Analysis Tools
+
+# Volatility (Windows/Linux/Mac)
+https://code.google.com/p/volatility/
+
+#Mandiant Redline (Windows)
+http://www.mandiant.com/resources/download/redline
+
+#VolaFox (Mac OS / BSD)
+https://github.com/n0fate/volafox
+
+==============================================================
+#Volatility Basics
+The Volatility Framework is a completely open collection of tools, implemented in Python under the GNU General Public License, for the extraction of digital artifacts from volatile memory (RAM) samples
+
+#Location in Kali Linux
+/usr/share/volatility/vol.py
+
+#Examples
+#Show Options and Supported plugins
+$ vol.py -h
+
+#Show plugin usage
+$ vol.py <plugin> -h
+
+#Identify System Profile
+$ vol.py -f mem.img imageinfo
+==============================================================
+#Identify Rogue Process
+#High level view of running processes
+$ vol.py pslist -f mem.img
+
+#Scan memory for EPROCESS Blocks
+$ vol.py psscan -f mem.img
+
+#Display parent-process relationships
+$ vol.py pstree -f mem.img
+===============================================================
+#Look for Evidence of Code Injection
+#malfind
+-p           show information only for specific PIDs
+-o           Provide physical offset if single process to scan
+--dump-dir   Directory to save memory section
+
+$ vol.py malfind --dump-dir ./output_dir
+
+#ldrmodules
+$ vol.py ldrmodules -p 868 -v           
+===============================================================
+#Check for Signs of a Rootkit
+#Examples
+
+#Find Hidden processes using cross-view
+$ vol.py psxview
+
+#Scan Memory for loaded, unloaded and Unlinked drivers
+$ vol.py modscan
+
+#Find API/DLL Function hooks
+$ vol.py apihooks
+$ vol.py apihooks -p 868 (Specific PID)
+$ vol.py apihooks -Q (Only Critical Processes)
+
+#Hooks in System Service Descriptor Table
+$ vol.py ssdt | grep -v '(ntoskrnl|win32k)'
+
+#Display Interrupt Descriptor Table
+$ vol.py idt
+
+#Identify I/O Request Packet (IRP) hooks
+$ vol.py driverip -r tcpip
+================================================================
+#Analyze Process DLLs and Handles
+#Examples
+
+#List of loaded dlls by process
+$ vol.py dlllist -p 4,868
+
+#Print process security indentifiers
+$ vol.py getsids -p 868
+
+#List of open handles for each process
+-t      Display handles of a certain type
+        {Process, Thread, Key, Event, File, Mutant, Token, Port}
+$ vol.py handles -p 58 -t Process, Mutant
+
+#Scan memory for FILE_OBJECT handles
+$ vol.py filescan
+
+#Scan for Windows Service Information
+$ vol.py svcscan
+================================================================
+#Dump Suspicious Processes and Drivers
+#Examples
+
+#Extract DLLs from Specific Processes
+#dlldump
+   -p          Dump DLLs only for specific PIDs
+   -b          Dump DLLs from process at physical memory offset
+   -r          Dump DLLs matching REGEX name
+   --dump-dir  Directory to save extracted files
+
+$ vol.py dlldump --dump-dir ./output –r metsrv 
+
+#Extract kernel drivers
+#moddump
+   -o Dump    driver using offset address (from modscan)
+   -r Dump    drivers matching REGEX name
+   --dump-dir Directory to save extracted files
+
+$ vol.py moddump --dump-dir ./output –r gaopdx
+
+#Dump process to executable sample
+#procmemdump
+   -p         Dump only specific PIDs
+   -o         Specify process by physical memory offset
+   --dump-dir Directory to save extracted files
+
+$ vol.py procmemdump --dump-dir ./output –p 868 
+
+#Dump every memory section into a file
+   -p         Dump memory sections from these PIDs
+   --dump-dir Directory to save extracted files
+
+$ vol.py memdump –dump-dir ./output –p 868 
+================================================================
+#Review Network Artifacts
+#Examples
+
+#[XP] List of open TCP connections
+$ vol.py connections
+
+#[XP] ID TCP connections, including closed
+$ vol.py connscan
+
+#[XP] Print listening sockets (any protocol)
+$ vol.py sockets
+
+#[XP] ID sockets, including closed/unlinked
+$ vol.py sockscan
+
+#[Win7] Scan for connections and sockets
+$ vol.py netscan
+
+================================================================
+
+#Memory Acquisition
+#Windows Operating Systems
+# Win32dd (x86) / Win64dd (x64)
+
+#Example
+c:\> win32dd.exe /f E:\memory.img
+
+#MemoryDD.bat
+
+#Example
+c:\> MemoryDD.bat --output E:\
+
+#Volatily WinPmem
+#Options
+- output to standard out
+-l Load driver for live memory analysis
+
+=================================================================
+#Converting Hibernation Files and Crash Dumps
+#Volatility imagecopy
+#Options
+   -f            Name of Source File
+   -O            Output file Name
+    --profile    Source OS from imageinfo
+
+#Examples
+$ vol.py imagecopy -f hiberfil.sys -O hiber.img --profile=Win7SP1x64
+$ vol.py imagecopy -f Memory.dmp -O memdmp.img --profile=Win7SP1x64
+
+===================================================================
+#Memory Artifact Timelining
+
+#The Volatility Timeliner plugin parses time-stamped objects found in memory images. Output is sorted by:
+ Process creation time
+ Thread creation time
+ Driver compile time
+ DLL / EXE compile time
+ Network socket creation time
+ Memory resident registry key last write time
+ Memory resident event log entry creation time
+
+#timeliner
+    ‐‐output‐file Optional file to write output (v2.1)
+    ‐‐output=body bodyfile format for mactime (v2.3)
+
+$ vol.py -f mem.img timeliner --output-file out.csv --profile=Win7SP1x86 
+
+=====================================================================
+# Registry Analysis Volatility Plugins
+#hivelist - Find and list available registry hives
+$ vol.py hivelist
+
+#hivedump - Print all keys and subkeys in a hive
+   -o Offset of registry hive to dump (virtual offset)
+$ vol.py hivedump –o 0xe1a14b60
+
+#printkey - Output a registry key, subkeys, and values
+   -K “Registry key path”
+$ vol.py printkey –K “Software\Microsoft\Windows\CurrentVersion\Run”
+
+#userassist - Find and parse userassist key values
+$ vol.py userassist
+
+#hashdump - Dump user NTLM and Lanman hashes
+  -y Virtual offset of SYSTEM registry hive (from hivelist)
+  -s Virtual offset of SAM registry hive (from hivelist)
+$ vol.py hashdump –y 0x8781c008 –s 0x87f6b9c8 
+========================================================================
+
+
