@@ -12,3 +12,13 @@ How to Use
 ----------
 
 In order to use these cheatsheets, the cheatsheets in this repository need to go into `~/.cheat/` directory. After the files are moved into that directory, `cheat ncat` will display the ncat cheatsheet.
+
+Original Contributors
+---------------------
+
+This repository was originally a group project which had the following group members:
+
+- Andrew Kerr (andrewjkerr)
+- Angela Evans (angelaevans)
+- Alex Bujduveanu (alexbujduveanu)
+- Michael Christakos (truckiewow)
