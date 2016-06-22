@@ -1,0 +1,68 @@
+#Cisco iOS - Commands
+#Jose Moruno Cadima <sniferl4bs>
+
+#Enters enable mode
+enable
+
+# Short for, configure terminal
+conf t
+
+#Configure FastEthernet 0/0	
+(config)# interface fa0/0
+
+#Add ip to fa0/0	
+(config-if)# ip addr 0.0.0.0 255.255.255.255
+
+#Add ip to fa0/0	
+(config-if)# ip addr 0.0.0.0 255.255.255.255
+	
+#Configure vty line
+(config-if)# line vty 0 4
+
+#Cisco set telnet password
+(config-line)# login
+
+#Set telnet password
+(config-line)# password YOUR-PASSWORD
+
+#Show running config loaded in memory
+# show running-config
+
+#Show sartup config
+# show startup-config
+	
+#show cisco IOS version
+# show version
+
+#display open sessions
+# show session
+
+#Show network interfaces
+# show ip interface
+
+#Show detailed interface info
+# show interface e0
+
+#Show routes
+# show ip route
+	
+Show access lists
+# show access-lists
+
+#Show available files
+# dir file systems
+
+#File information
+# dir all-filesystems
+
+#Show deleted files
+# dir /all
+
+#No limit on terminal output
+# terminal length 0
+
+#Copys running config to tftp server
+# copy running-config tftp
+
+#Copy startup-config to running-config
+# copy running-config startup-config
