@@ -44,4 +44,5 @@ Resources
 =========
 
 Metasploit Cheat Sheet [Sans Institute](http://www.sans.org/security-resources/sec560/misc_tools_sheet_v1.pdf)
+Cisco IOS Cheat Sheet [highon.coffee](highon.coffee)
 Volatility Cheat Sheet [Sans Institute] (https://digital-forensics.sans.org/media/memory-forensics-cheat-sheet.pdf)
