@@ -1,5 +1,9 @@
 # andrew <andrewjkerr>
 # Jose Moruno <snifer>
+
+#Automated sqlmap scan
+./sqlmap -u http://site.com--forms --batch --crawl=2 --cookie= --level=5 --risk=3
+
 # Test URL and POST data and return database banner (if possible)
 ./sqlmap.py --url="<url>" --data="<post-data>" --banner
 
