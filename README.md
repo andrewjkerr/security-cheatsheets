@@ -29,7 +29,7 @@ This repository was originally a group project which had the following group mem
 
 ## License
 
-This repository is licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This repository is licensed under the [MIT license](https://github.com/andrewjkerr/security-cheatsheets/blob/master/LICENSE.md).
 
 ## Contributing
 
