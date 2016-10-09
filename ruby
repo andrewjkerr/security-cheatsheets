@@ -1,5 +1,3 @@
-# andrew <andrewjkerr>
-# currently learning ruby - a few things that I keep forgetting
 # sockets
 require 'socket'
 hostname = localhost

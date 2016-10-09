@@ -1,5 +1,3 @@
-# andrew <andrewjkerr>
-# I also have trouble remember markdown syntax...
 # headers
 h1 header
 =========

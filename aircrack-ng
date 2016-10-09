@@ -1,4 +1,3 @@
-# michael <truckiewow>
 # To crack WEP for a given essid name and store into a file
 aircrack-ng -a 1 -e <essid> -l <output file> <.cap or .ivs file(s)>
 
