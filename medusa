@@ -1,4 +1,3 @@
-# alex <alexbujduveanu>
 # To display all currently installed modules
 medusa -d
 

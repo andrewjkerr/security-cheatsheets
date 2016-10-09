@@ -1,4 +1,3 @@
-# andrew <andrewjkerr>
 # Test URL and POST data and return database banner (if possible)
 ./sqlmap.py --url="<url>" --data="<post-data>" --banner
 
