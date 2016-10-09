@@ -1,4 +1,3 @@
-# andrew <andrewjkerr>
 # basic sql injection prevention
 $sth = $db->prepare("SELECT * FROM table WHERE username=? and password=?");
 $sth->execute([$pUsername $pPassword]);

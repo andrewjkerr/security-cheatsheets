@@ -1,6 +1,4 @@
-# alex <alexbujduveanu>
-
-# Classless Inter-Domain Routing
+# cidr - Classless Inter-Domain Routing
 
 # Before CIDR and Variable Length Subnet Masks, IP addresses had fixed subnet masks
 # Class C had a 24 bit prefix (/24), Class B had a 16 bit prefix (/16), and Class A had an 8 bit prefix (/8)

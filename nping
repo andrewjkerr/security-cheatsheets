@@ -1,5 +1,3 @@
-# alexbujduveanu <alexbujduveanu>
-
 # To perform a TCP connect() (handshake) with a host
 nping --tcp-connect [target host]
 
