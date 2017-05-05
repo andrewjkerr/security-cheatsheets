@@ -1,0 +1,40 @@
+# cut - select columns of text from each line of a file
+# if you're needing more comprehensive pattern-directed 
+# scanning and processing, take a look at `awk`
+
+# Given a text file (file.txt) with the following text:
+# unix or linux os
+# is unix good os
+# is linux good os
+
+# cut will return the fourth element if given:
+cut -c4 file.txt
+x
+u
+l
+
+# cut will return the fourth and sixth element if given:
+cut -c4,6 file.txt
+xo
+ui
+ln
+
+# cut will return the fourth through seventh element if given:
+cut -c4-7 file.txt
+x or
+unix
+linu
+
+# to use cut like `awk` you could do the following to return the 
+# second element, delimetered by a space:
+cut -d' ' -f2 file.txt
+or
+unix
+linux
+
+# in the same way as above you can modify -f to return varying results:
+cut -d' ' -f2,3 file.txt
+or linux
+unix good
+linux good
+
