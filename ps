@@ -25,3 +25,6 @@ ps -U $USER
 
 # Sort processes based on CPU and memory usage (useful for finding memory leaks)
 ps aux --sort pmem
+
+# Show environment variable settings for each PID
+COLUMNS=10240 ps axel
