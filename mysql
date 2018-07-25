@@ -8,7 +8,7 @@ mysqldump --all-databases --all-routines -u root -p > ~/fulldump.sql
 mysql -u root -p  < ~/fulldump.sql
 
 # To create a database in utf8 charset
-CREATE DATABASE owa CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE owa CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 # Types of user permissions:
 
