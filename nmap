@@ -1,3 +1,9 @@
+# HTB scan
+# sV: enumerate versions
+# sC: safe script
+# oA: output all formats
+nmap -sV -sC -oA nmap 0.0.0.0
+
 # Nmap verbose scan, runs syn stealth, T4 timing (should be ok on LAN), OS and service version info, traceroute and scripts against services
 nmap -v -sS -A -T4 target
 
